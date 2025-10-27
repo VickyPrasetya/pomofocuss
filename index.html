@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomofocus Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://pomofocus.io/images/icon-white.png" alt="Pomofocus">
+            </div>
+            <div class="buttons">
+                <button id="report-btn" class="header-btn"><i class="fas fa-chart-bar"></i> Report</button>
+                <button id="setting-btn" class="header-btn"><i class="fas fa-cog"></i> Setting</button>
+                <button id="signin-btn" class="header-btn"><i class="fas fa-user-circle"></i> Sign In</button>
+            </div>
+        </header>
+
+    <main>
+        <div class="timer-card">
+            <div class="timer-modes">
+                <button id="pomodoro-btn" class="mode-btn active">Pomodoro</button>
+                <button id="short-break-btn" class="mode-btn">Short Break</button>
+                <button id="long-break-btn" class="mode-btn">Long Break</button>
+            </div>
+            <div class="timer-display">
+                25:00
+            </div>
+            <button id="start-stop-btn">START</button>
+        </div>
+
+        <!-- This is the updated Task section -->
+        <div class="task-section">
+            <p id="current-task-text" class="task-title-text">#1 <br> Time to focus!</p>
+
+            <div class="task-header">
+                <h3>Tasks</h3>
+                <button class="more-btn">...</button>
+            </div>
+
+            <!-- This is where the created tasks will be displayed -->
+            <div id="task-list"></div>
+
+            <!-- The "Add Task" button/placeholder -->
+            <div id="add-task-btn" class="add-task-placeholder">
+                <i class="fas fa-plus-circle"></i> Add Task
+            </div>
+
+            <!-- The Task Form (initially hidden) -->
+            <div id="task-form" class="task-form-container hidden">
+                <input type="text" id="task-input" placeholder="What are you working on?">
+                <div class="est-pomodoros">
+                    <label>Est Pomodoros</label>
+                    <input type="number" id="pomodoro-estimate" value="1" min="1">
+                </div>
+                <div class="form-footer">
+                    <button id="cancel-task-btn" class="form-btn cancel-btn">Cancel</button>
+                    <button id="save-task-btn" class="form-btn save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Setting</h2>
+                <button id="close-settings-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Timer Settings -->
+                <h4><i class="far fa-clock"></i> TIMER</h4>
+                <div class="setting-group">
+                    <label>Time (minutes)</label>
+                    <div class="time-inputs">
+                        <div>Pomodoro <input type="number" id="pomodoro-setting" value="25" min="1"></div>
+                        <div>Short Break <input type="number" id="short-break-setting" value="5" min="1"></div>
+                        <div>Long Break <input type="number" id="long-break-setting" value="15" min="1"></div>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label>Auto Start Breaks</label>
+                    <label class="switch"><input type="checkbox" id="auto-start-breaks"><span class="slider"></span></label>
+                </div>
+                <div class="setting-item">
+                    <label>Auto Start Pomodoros</label>
+                    <label class="switch"><input type="checkbox" id="auto-start-pomodoros"><span class="slider"></span></label>
+                </div>
+                 <div class="setting-item">
+                    <label for="long-break-interval">Long Break interval</label>
+                    <input type="number" id="long-break-interval" value="4" min="1" class="interval-input">
+                </div>
+
+                <!-- Theme Settings -->
+                <h4><i class="fas fa-palette"></i> THEME</h4>
+                 <div class="setting-item">
+                    <label>Color Themes</label>
+                    <div class="color-themes">
+                        <span class="color-dot active" data-color="#c15c5c"></span>
+                        <span class="color-dot" data-color="#38858a"></span>
+                        <span class="color-dot" data-color="#397097"></span>
+                    </div>
+                </div>
+            </div>
+             <div class="modal-footer">
+                <button id="ok-btn" class="ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div id="report-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Report</h2>
+                <button id="close-report-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                 <div class="report-tabs">
+                    <button class="report-tab-btn active">Summary</button>
+                    <button class="report-tab-btn">Detail</button>
+                    <button class="report-tab-btn">Ranking</button>
+                </div>
+                <h4>Activity Summary</h4>
+                 <div class="summary-cards">
+                    <div class="card">
+                        <div class="card-title">HOURS FOCUSED</div>
+                        <div class="card-value">--</div>
+                    </div>
+                    <div class="card">
+                         <div class="card-title">DAYS ACCESSED</div>
+                        <div class="card-value">--</div>
+                    </div>
+                     <div class="card">
+                         <div class="card-title">DAY STREAK</div>
+                        <div class="card-value">--</div>
+                    </div>
+                </div>
+                 <small>* This report will be available when you are logged in</small>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
